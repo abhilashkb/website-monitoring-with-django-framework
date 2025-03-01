@@ -21,4 +21,4 @@ class DomainHistory(models.Model):
     date = models.DateTimeField('date')
     status = models.CharField(max_length=200)
     def __str__(self):
-        return self.status
+        return f"{self.domain} - {self.date} - {self.status}"
