@@ -4,6 +4,10 @@ import requests
 
 @shared_task
 def check_domain_status():
+    """
+    Periodically checks the status of all domains.
+    Updates the DomainStatus model with the response code and response time.
+    """
     domains = Domain.objects.all()
     for domain in domains:
         try:

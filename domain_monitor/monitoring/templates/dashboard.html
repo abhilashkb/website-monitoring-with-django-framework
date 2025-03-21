@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Domains</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Domain</th>
+                <th>Status</th>
+                <th>Expiration Date</th>
+                <th>Registrar</th>
+                <th>Response Code</th>
+                <th>Response Time</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for domain in domains %}
+            <tr>
+                <td><a href="{% url 'domain_detail' domain.id %}">{{ domain.name }}</a></td>
+                <td>{{ domain.domainstatus.status }}</td>
+                <td>{{ domain.domainstatus.expiration_date }}</td>
+                <td>{{ domain.domainstatus.registrar }}</td>
+                <td>{{ domain.domainstatus.response_code }}</td>
+                <td>{{ domain.domainstatus.response_time }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'add_domain' %}">Add domain</a>
+{% endblock %}

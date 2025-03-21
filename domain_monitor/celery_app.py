@@ -16,6 +16,7 @@ app.autodiscover_tasks()
 # This means that Celery will look for settings that start with 'CELERY_'.
 app.config_from_object('django.conf:settings', namespace='CELERY')
 
+# Define the Celery beat schedule for periodic tasks
 app.conf.beat_schedule = {
     'check-domain-status-every-5-minutes': {
         'task': 'monitoring.tasks.check_domain_status',
